@@ -1,7 +1,7 @@
 ![](header.png)
 
 # Finacial Controller List
-> Movies showcase for genres
+> Finacial app
 
 For this project, my task was create a finacial app in typescript.
 
