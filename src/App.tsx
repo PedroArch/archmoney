@@ -6,6 +6,7 @@ import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header"
 import { NewTransactionModal } from "./components/NewTransactionModal";
 import { TransactionsProvider } from "./hooks/useTransactions";
+import GitHubCorner from "./components/GithubCorner";
 
 
 Modal.setAppElement('#root')
@@ -24,6 +25,7 @@ export function App() {
   
   return (
     <TransactionsProvider>
+      <GitHubCorner />
       <Header openNewTransactionModal={handleNewTransactionModalOpen}/>
 
       <Dashboard />
