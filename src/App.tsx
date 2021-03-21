@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from 'react-modal';
 
 import { GlobalStyle } from "./styles/global";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header"
 import { NewTransactionModal } from "./components/NewTransactionModal";
-
-import { api } from "./service/api";
+import { TransactionsProvider } from "./TransactionsContext";
 
 Modal.setAppElement('#root')
 
@@ -21,24 +20,20 @@ export function App() {
   function handleNewTransactionModalClose () {
     setIsNewTransactionModalOpen(false)
   }
-
-  useEffect(()=>{
-    api.get('/transactions')
-    .then(response => console.log(response.data));
-  }, [])
-
   
   return (
-    <div className="App">
+    <TransactionsProvider>
       <Header openNewTransactionModal={handleNewTransactionModalOpen}/>
+
       <Dashboard />
+
       <NewTransactionModal
         isOpen={isNewTransactionModalOpen}
         onRequestClose={handleNewTransactionModalClose}
       />
 
       <GlobalStyle />
-    </div>
+    </TransactionsProvider>
   );
 }
 
